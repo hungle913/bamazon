@@ -2,7 +2,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-// create connection to sql database
+// create connection information to sql database
 var connection = mysql.createConnection({
     host: "localhost",
 
@@ -18,3 +18,11 @@ var connection = mysql.createConnection({
     //database to connect to
     database: "bamazon_DB"
 });
+
+// connect to the server and database
+connection.connect(function(err) {
+    if (err) throw err;
+    //run start function after connection is made
+    start();
+})
+
