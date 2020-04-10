@@ -19,10 +19,4 @@ var connection = mysql.createConnection({
     database: "bamazon_DB"
 });
 
-// connect to the server and database
-connection.connect(function(err) {
-    if (err) throw err;
-    //run start function after connection is made
-    start();
-})
 
