@@ -19,4 +19,23 @@ var connection = mysql.createConnection({
     database: "bamazon_DB"
 });
 
+// connect to the server and database
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    //variable to pull table data of products
+    var productData = "SELECT * FROM products";
 
+    //query data from database
+    connection.query(productData, function (err, result) {
+        if (err) throw err;
+        console.log("Below is a list of our current inventory.")
+        console.table(result);
+
+    });
+    
+    //run start function after inventory is shown
+    // start();
+ 
+    connection.end();
+});
