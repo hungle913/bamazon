@@ -31,11 +31,26 @@ connection.connect(function(err) {
         if (err) throw err;
         console.log("Below is a list of our current inventory.")
         console.table(result);
-
-    });
-    
-    //run start function after inventory is shown
-    // start();
+        //run start function after inventory is shown
+        // start();
  
-    connection.end();
+        start();
+    });
 });
+
+function start() {
+    inquirer.prompt([{
+        name: "id",
+        type: "list",
+        message: "What is the ID number for the item you would like to purchase?",
+        choices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
+        {
+         name: "quantity",
+         type: "number",
+         message: "How many would you like to purchase?",
+        }
+    ]).then(function(answer) {
+        console.log(answer);
+        connection.end();
+    })
+}
