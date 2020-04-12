@@ -48,16 +48,32 @@ function start() {
          message: "How many would you like to purchase?",
         }]).then(function(answer) {
         //console.log to test for answers
-        console.log("ID is: " + answer.id);
-        console.log("Quantity is: " + answer.quantity);
+        // console.log("ID is: " + answer.id);
+        // console.log("Quantity is: " + answer.quantity);
 
-
-
-
-  
+        //compare response against inventory and calculate purchase amount if enough inventory.
+        connection.query(productData, function (err, result) {
+            i = answer.id - 1;
+            // console.log("Answer Quantity is: " + answer.quantity);
+            // console.log("Stock Quantity is: " + result[i].STOCK_QUANTITY);
+            if (answer.quantity > result[i].STOCK_QUANTITY) {
+            console.log("SORRY! We do not have enough stock to fullfill your order. Please start again");
+            start();
+            } else {
+                amountOwed = result[i].PRICE * answer.quantity;
+                console.log("Thank You for odering " + answer.quantity + " " + result[i].PRODUCT_NAME);
+                console.log("Your order total is: " + amountOwed);
+                newStockQuantity = result[i].STOCK_QUANTITY - answer.quantity;
+                connection.query(
+                    "UPDATE products SET ? WHERE ?",
+                    [{
+                        STOCK_QUANTITY: newStockQuantity
+                    },{
+                        ID: answer.id
+                    }]
+                );
+                connection.end();
+            }
+        });
     });
-        
-
-
-
 };
