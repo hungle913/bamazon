@@ -24,16 +24,14 @@ connection.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
     //variable to pull table data of products
-    var productData = "SELECT * FROM products";
+    productData = "SELECT * FROM products";
 
     //query data from database
     connection.query(productData, function (err, result) {
         if (err) throw err;
         console.log("Below is a list of our current inventory.")
         console.table(result);
-        //run start function after inventory is shown
-        // start();
- 
+        //run start function after inventory is shown 
         start();
     });
 });
@@ -48,9 +46,18 @@ function start() {
          name: "quantity",
          type: "number",
          message: "How many would you like to purchase?",
-        }
-    ]).then(function(answer) {
-        console.log(answer);
-        connection.end();
-    })
-}
+        }]).then(function(answer) {
+        //console.log to test for answers
+        console.log("ID is: " + answer.id);
+        console.log("Quantity is: " + answer.quantity);
+
+
+
+
+  
+    });
+        
+
+
+
+};
