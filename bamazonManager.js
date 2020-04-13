@@ -34,16 +34,33 @@ function start() {
         choices: ["View Products", "Low Inventory", "Add to Inventory", "Add New Product"]
     }]).then(function(answer) {
         // console.log(answer.options)
-        if (answer.options = "View Products") {
-            //variable to pull table data of products
-            productData = "SELECT * FROM products";
-            //query data from database
-            connection.query(productData, function (err, result) {
-            if (err) throw err;
-            console.log("Below is a list of our current inventory.")
-            console.table(result);
-            });
-        }
-        connection.end();
+        switch (answer.options) {
+            case "View Products":
+                viewProducts();
+                break;
+            case "Low Inventory":
+                lowInventory();
+                break;
+            case "Add to Inventory":
+                addInventory();
+                break;
+            case "Add New Product":
+                addProduct();
+                break;
+        };
+
     });
 };
+
+function viewProducts() {
+    //variable to pull table data of products
+    productData = "SELECT * FROM products";
+    //query data from database
+    connection.query(productData, function (err, result) {
+        if (err) throw err;
+        console.log("Below is a list of our current inventory.")
+        console.table(result);
+    });
+
+    connection.end();
+}
