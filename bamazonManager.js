@@ -34,6 +34,7 @@ function start() {
         choices: ["View Products", "Low Inventory", "Add to Inventory", "Add New Product"]
     }]).then(function(answer) {
         // console.log(answer.options)
+
         switch (answer.options) {
             case "View Products":
                 viewProducts();
@@ -55,7 +56,8 @@ function start() {
 //function to view products from prompt answer
 function viewProducts() {
     //variable to pull table data of products
-    productData = "SELECT * FROM products";
+    var productData = "SELECT * FROM products";
+
     //query data from database
     connection.query(productData, function (err, result) {
         if (err) throw err;
@@ -68,16 +70,26 @@ function viewProducts() {
 
 //function to see low inventory from prompt answer
 function lowInventory() {
+    //variable to pull table data of products
+    var lowInventoryData = "SELECT * FROM products WHERE stock_quantity < 5";
 
+    //query data from database
+    connection.query(lowInventoryData, function (err, result) {
+        console.table(result);
+    });
+
+    connection.end();
 };
 
 
 //function to add inventory from prompt answer
 function addInventory() {
 
+    connection.end();
 };
 
 //function to add product from prompt answer
 function addProduct() {
 
+    connection.end();
 };
