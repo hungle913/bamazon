@@ -26,3 +26,24 @@ connection.connect(function(err) {
     start();
 });
 
+function start() {
+    inquirer.prompt ([{
+        name: "options",
+        type: "list",
+        message: "Menu Options",
+        choices: ["View Products", "Low Inventory", "Add to Inventory", "Add New Product"]
+    }]).then(function(answer) {
+        // console.log(answer.options)
+        if (answer.options = "View Products") {
+            //variable to pull table data of products
+            productData = "SELECT * FROM products";
+            //query data from database
+            connection.query(productData, function (err, result) {
+            if (err) throw err;
+            console.log("Below is a list of our current inventory.")
+            console.table(result);
+            });
+        }
+        connection.end();
+    });
+};
