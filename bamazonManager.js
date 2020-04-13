@@ -52,6 +52,7 @@ function start() {
     });
 };
 
+//function to view products from prompt answer
 function viewProducts() {
     //variable to pull table data of products
     productData = "SELECT * FROM products";
@@ -63,4 +64,20 @@ function viewProducts() {
     });
 
     connection.end();
-}
+};
+
+//function to see low inventory from prompt answer
+function lowInventory() {
+
+};
+
+
+//function to add inventory from prompt answer
+function addInventory() {
+
+};
+
+//function to add product from prompt answer
+function addProduct() {
+
+};
