@@ -98,10 +98,18 @@ function addInventory() {
     });
 
     function increaseInventory() {
-        
-    }
 
-    connection.end();
+        inquirer.prompt([{
+            name: "id",
+            type: "list",
+            message: "What is the ID number for the item you would like to add to inventory?",
+            choices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
+            {
+             name: "quantity",
+             type: "number",
+             message: "How many would you like add to this item?",
+            }]).then(function(answer)
+    }
 };
 
 //function to add product from prompt answer
