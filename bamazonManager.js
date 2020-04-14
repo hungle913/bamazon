@@ -137,5 +137,24 @@ function addInventory() {
 //function to add product from prompt answer
 function addProduct() {
 
-    connection.end();
+    inquirer.prompt([{
+        name: "product",
+        type: "input",
+        message: "What is the product you would like to add?"
+    },
+    {
+         name: "department",
+         type: "input",
+         message: "What department does this belong to?"
+    },
+    {
+         name: "price",
+         type: "number",
+         message: "How much does this product cost?"
+    },
+    {
+         name: "quantity",
+         type: "number",
+         message: "How many are we adding to the inventory?"
+    }]).then(function(answer) 
 };
