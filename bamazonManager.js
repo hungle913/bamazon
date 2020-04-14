@@ -85,6 +85,22 @@ function lowInventory() {
 //function to add inventory from prompt answer
 function addInventory() {
 
+    //variable to pull table data of products
+    productData = "SELECT * FROM products";
+
+    //query data from database
+    connection.query(productData, function (err, result) {
+        if (err) throw err;
+        console.log("Below is a list of our current inventory.")
+        console.table(result);
+        //run start function after inventory is shown 
+        increaseInventory();
+    });
+
+    function increaseInventory() {
+        
+    }
+
     connection.end();
 };
 
