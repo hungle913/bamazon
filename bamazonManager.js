@@ -108,7 +108,29 @@ function addInventory() {
              name: "quantity",
              type: "number",
              message: "How many would you like add to this item?",
-            }]).then(function(answer)
+            }]).then(function(answer) {
+            //console.log to test for answers
+            // console.log("ID is: " + answer.id);
+            // console.log("Quantity is: " + answer.quantity);
+    
+            //compare response against inventory and calculate purchase amount if enough inventory.
+            connection.query(productData, function (err, result) {
+                i = answer.id - 1;
+                // console.log("Answer Quantity is: " + answer.quantity);
+                // console.log("Stock Quantity is: " + result[i].STOCK_QUANTITY);
+                newStockQuantity = result[i].STOCK_QUANTITY + answer.quantity;
+                console.log("Your new stock quantity for " + result[i].PRODUCT_NAME + " is: " + newStockQuantity);
+                connection.query(
+                    "UPDATE products SET ? WHERE ?",
+                    [{
+                        STOCK_QUANTITY: newStockQuantity
+                    },{
+                        ID: answer.id
+                    }]
+                );
+                connection.end();
+            });
+        });
     }
 };
 
