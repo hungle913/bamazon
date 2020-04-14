@@ -156,5 +156,26 @@ function addProduct() {
          name: "quantity",
          type: "number",
          message: "How many are we adding to the inventory?"
-    }]).then(function(answer) 
+    }]).then(function(answer) {
+        var product = answer.product;
+        var department = answer.department;
+        var price = answer.price;
+        var quantity = answer.quantity;
+
+        connection.query(
+
+            'INSERT INTO products (product_name, department_name, price, stock_quantity) VALUES ("' + product + '", "' + department + '", ' + price + ', ' + quantity + ')',
+        );
+        
+        productData = "SELECT * FROM products";
+
+        //query data from database
+        connection.query(productData, function (err, result) {
+            if (err) throw err;
+            console.log("Here is the updated inventory list.")
+            console.table(result);
+    
+            connection.end();
+        });
+    });
 };
