@@ -39,9 +39,8 @@ connection.connect(function(err) {
 function start() {
     inquirer.prompt([{
         name: "id",
-        type: "list",
-        message: "What is the ID number for the item you would like to purchase?",
-        choices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
+        type: "number",
+        message: "What is the ID number for the item you would like to purchase?"},
         {
          name: "quantity",
          type: "number",
