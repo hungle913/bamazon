@@ -59,15 +59,19 @@ Bamazon is an Amazon-like store front using node.js and mysql CLI app.
 
 ### bamazonCustomer.js command example
 1. `View Producsts`
+
 ![View Products](./images/manager_view_products.PNG "View Products")
 
 2. `Low Inventory`
+
 ![Low Inventory](./images/manager_low_inventory.PNG "Low Inventory")
 
 3. `Add to Inventory`
+
 ![Add Inventory](./images/manager_add_inventory.PNG "Add Inventory")
 
 4. `Add New Product`
+
 ![Add Product](./images/manager_add_product.PNG "Add New Product")
 
 ## Technologies used
