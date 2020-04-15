@@ -54,6 +54,9 @@ Bamazon is an Amazon-like store front using node.js and mysql CLI app.
 
 ## Screen shots
 
+#### bamazonCustomer.js command example
+![bamazonCustomer](./images/customer.PNG "bamazonCustomer")
+
 ## Technologies used
 
 ### Prerequisites
