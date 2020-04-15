@@ -51,3 +51,13 @@ Bamazon is an Amazon-like store front using node.js and mysql CLI app.
     * If the manager selects `Add New Product` it will prompt the manager for information to add new inventory product. 
 
 -----------------------
+
+## Screen shots
+
+## Technologies used
+
+### Prerequisites
+
+## Built With
+
+## Authors
